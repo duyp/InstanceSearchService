@@ -2,27 +2,44 @@ package com.uit.instancesearch.services;
 
 public class ClientAgent {
 	
-	private int id;
+	private String id;
 	private String name;
 	
+	private int status;
 	private String requestTag;
 	private String queryContent;
 	private String[] queryResult;
 	
-	public ClientAgent(int id, String name, String requestTag,String queryImageContent) {
-		this.id = id;
+	public ClientAgent(String name, String requestTag,String queryImageContent) {
+		refreshId();
 		this.name = name;
 		this.requestTag = requestTag;
 		this.queryContent = queryImageContent;
 		queryResult = null;
+		status = ClientController.STATUS_NONE;
 	}
 	
-	public String getContent(){
+	public String getQueryContent(){
 		return queryContent;
 	}
 	
-	public int getId(){
+	// set current status for client 
+	// status: STATUS_NONE, STATUS_WAIT_CONNECT, STATUS_WAIT_RESPONE
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+	
+	public String getId(){
 		return id;
+	}
+	
+	// generate a random id
+	public void refreshId() {
+		this.id = Tools.getRandomNumberString(10);
 	}
 	
 	public String getName(){

@@ -4,6 +4,21 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://services.instancesearch.uit.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="serverRespond">
+    <complexType>
+     <sequence>
+      <element name="clientId" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="result" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="serverRespondResponse">
+    <complexType>
+     <sequence>
+      <element name="serverRespondReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="serverConnect">
     <complexType>
      <sequence>
@@ -17,21 +32,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element maxOccurs="unbounded" name="serverConnectReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="serverRespond">
-    <complexType>
-     <sequence>
-      <element name="clientId" type="xsd:string"/>
-      <element maxOccurs="unbounded" name="result" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="serverRespondResponse">
-    <complexType>
-     <sequence>
-      <element name="serverRespondReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -104,18 +104,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="ISService">
 
-      <wsdl:operation name="serverConnect">
-
-         <wsdl:input message="impl:serverConnectRequest" name="serverConnectRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:serverConnectResponse" name="serverConnectResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="serverRespond">
 
          <wsdl:input message="impl:serverRespondRequest" name="serverRespondRequest">
@@ -123,6 +111,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:serverRespondResponse" name="serverRespondResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="serverConnect">
+
+         <wsdl:input message="impl:serverConnectRequest" name="serverConnectRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:serverConnectResponse" name="serverConnectResponse">
 
        </wsdl:output>
 
@@ -146,24 +146,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="serverConnect">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="serverConnectRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="serverConnectResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="serverRespond">
 
          <wsdlsoap:operation soapAction=""/>
@@ -175,6 +157,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="serverRespondResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="serverConnect">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="serverConnectRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="serverConnectResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -206,7 +206,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:ISServiceSoapBinding" name="ISService">
 
-         <wsdlsoap:address location="http://localhost:8080/InstanceSearch/services/ISService"/>
+         <wsdlsoap:address location="http://localhost:8080/ISearchServices/services/ISService"/>
 
       </wsdl:port>
 

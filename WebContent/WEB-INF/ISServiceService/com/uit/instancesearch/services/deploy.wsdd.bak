@@ -20,14 +20,14 @@
       <parameter name="className" value="com.uit.instancesearch.services.ISServiceSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="ISService"/>
       <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="serverRespond" qname="operNS:serverRespond" xmlns:operNS="http://services.instancesearch.uit.com" returnQName="retNS:serverRespondReturn" xmlns:retNS="http://services.instancesearch.uit.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:clientId" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:result" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
       <operation name="serverConnect" qname="operNS:serverConnect" xmlns:operNS="http://services.instancesearch.uit.com" returnQName="retNS:serverConnectReturn" xmlns:retNS="http://services.instancesearch.uit.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:name" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:requestTag" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <operation name="serverRespond" qname="operNS:serverRespond" xmlns:operNS="http://services.instancesearch.uit.com" returnQName="retNS:serverRespondReturn" xmlns:retNS="http://services.instancesearch.uit.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:clientId" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:result" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="clientQueryRequest" qname="operNS:clientQueryRequest" xmlns:operNS="http://services.instancesearch.uit.com" returnQName="retNS:clientQueryRequestReturn" xmlns:retNS="http://services.instancesearch.uit.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:name" xmlns:pns="http://services.instancesearch.uit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>

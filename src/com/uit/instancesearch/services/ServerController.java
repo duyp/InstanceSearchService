@@ -4,7 +4,9 @@ import java.util.Vector;
 
 public class ServerController {
 
-	public static final int SERVER_RESPOND_TIME_OUT = 20000; //ms
+	public static final int SERVER_WAIT_TIMEOUT = 100000; // ms
+	public static final int SERVER_RESPOND_TIME_OUT_QUERY = 20000; //ms
+	public static final int SERVER_RESPOND_TIME_OUT_GET = 5000; //ms
 	
 	private static Vector<ServerAgent> queryServers = new Vector<ServerAgent>();
 	private static Vector<ServerAgent> getServers = new Vector<ServerAgent>();
@@ -19,7 +21,7 @@ public class ServerController {
 	
 	public static ServerAgent getServerAgent(String requestTag){
 		Vector<ServerAgent> servers = (requestTag.equals(ISService.QUERY_TAG)?queryServers:getServers);
-		return servers.size() == 0 ? null : servers.firstElement();
+		return servers.size() == 0 ? null : servers.lastElement(); // STACK: first in last out (old: servers.firstElement())
 	}
 	
 	public static void removeServer(ServerAgent server) {
