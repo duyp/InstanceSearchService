@@ -3,7 +3,7 @@
   <ns1:parameter name="sendMultiRefs" value="true"/>
   <ns1:parameter name="disablePrettyXML" value="true"/>
   <ns1:parameter name="adminPassword" value="admin"/>
-  <ns1:parameter name="attachments.Directory" value="/home/m/Development/ProjectData/EclipseJavaEE-Wordspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/InstanceSearch/WEB-INF/attachments"/>
+  <ns1:parameter name="attachments.Directory" value="E:\Project data\Java-Eclipse\EclipseJEE-Workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\InstanceSearchService\WEB-INF\attachments"/>
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
@@ -20,32 +20,8 @@
   </ns1:requestFlow>
  </ns1:globalConfiguration>
  <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
- <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
  <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
- <ns1:service name="ISService" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="serverRespond" qname="ns1:serverRespond" returnQName="ns1:serverRespondReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://services.instancesearch.uit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:clientId" type="xsd:string"/>
-   <ns2:parameter qname="ns1:result" type="xsd:string"/>
-  </ns2:operation>
-  <ns1:operation name="serverConnect" qname="ns2:serverConnect" returnQName="ns2:serverConnectReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services.instancesearch.uit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns2:id" type="xsd:string"/>
-   <ns1:parameter qname="ns2:name" type="xsd:string"/>
-   <ns1:parameter qname="ns2:requestTag" type="xsd:string"/>
-  </ns1:operation>
-  <ns1:operation name="clientQueryRequest" qname="ns3:clientQueryRequest" returnQName="ns3:clientQueryRequestReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://services.instancesearch.uit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns3:name" type="xsd:string"/>
-   <ns1:parameter qname="ns3:requestTag" type="xsd:string"/>
-   <ns1:parameter qname="ns3:queryImageContent" type="xsd:string"/>
-  </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="serverRespond serverConnect clientQueryRequest"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="wsdlPortType" value="ISService"/>
-  <ns1:parameter name="className" value="com.uit.instancesearch.services.ISService"/>
-  <ns1:parameter name="wsdlServicePort" value="ISService"/>
-  <ns1:parameter name="schemaQualified" value="http://services.instancesearch.uit.com"/>
-  <ns1:parameter name="wsdlTargetNamespace" value="http://services.instancesearch.uit.com"/>
-  <ns1:parameter name="wsdlServiceElement" value="ISServiceService"/>
- </ns1:service>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
  <ns1:service name="AdminService" provider="java:MSG">
   <ns1:parameter name="allowedMethods" value="AdminService"/>
   <ns1:parameter name="enableRemoteAdmin" value="false"/>
@@ -55,6 +31,30 @@
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="ISService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="serverConnect" qname="ns1:serverConnect" returnQName="ns1:serverConnectReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://services.instancesearch.uit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:id" type="xsd:string"/>
+   <ns2:parameter qname="ns1:name" type="xsd:string"/>
+   <ns2:parameter qname="ns1:requestTag" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="serverRespond" qname="ns2:serverRespond" returnQName="ns2:serverRespondReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services.instancesearch.uit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:clientId" type="xsd:string"/>
+   <ns1:parameter qname="ns2:result" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="clientQueryRequest" qname="ns3:clientQueryRequest" returnQName="ns3:clientQueryRequestReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://services.instancesearch.uit.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:name" type="xsd:string"/>
+   <ns1:parameter qname="ns3:requestTag" type="xsd:string"/>
+   <ns1:parameter qname="ns3:queryImageContent" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="serverConnect serverRespond clientQueryRequest"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ISService"/>
+  <ns1:parameter name="className" value="com.uit.instancesearch.services.ISService"/>
+  <ns1:parameter name="wsdlServicePort" value="ISService"/>
+  <ns1:parameter name="schemaQualified" value="http://services.instancesearch.uit.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.instancesearch.uit.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ISServiceService"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>
